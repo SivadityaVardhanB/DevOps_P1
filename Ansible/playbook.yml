@@ -1,25 +1,14 @@
 - hosts: nodes
   become: yes
   tasks:
+  - name: Python Installation
+    apt:
+      name: python3
+      state: latest
+      update_cache: yes
+
   - name: Git Installation
     apt:
       name: git
       state: present
       update_cache: yes
-
-  - name: Docker Installation
-    apt:
-      name: docker.io
-      state: latest
-      update_cache: yes
-
-  - name: Docker-Compose Installation
-    apt:
-      name: docker-compose
-      state: latest
-      update_cache: yes
-
-  - name: Adding user to docker group
-    user:
-      name: vagrant
-      groups: docker
